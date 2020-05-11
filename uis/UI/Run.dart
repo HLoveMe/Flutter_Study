@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import './Container.dart';
+import './RowColmun.dart';
 
 class UI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.red),
+      theme: ThemeData(primarySwatch: Colors.grey),
       home: Home(),
     );
   }
@@ -13,7 +14,7 @@ class UI extends StatelessWidget {
 
 class Home extends StatelessWidget {
   // final List<String> uis = ["Container"];
-  final List<String> uis = ["Container"];
+  final List<String> uis = ["Container","Row/Column"];
   goSomeUI(String name, BuildContext context) {
     Navigator.push(
       context,
@@ -21,6 +22,8 @@ class Home extends StatelessWidget {
         switch (name) {
           case "Container":
             return new ContainerPage(title: name);
+          case "Row/Column":
+            return new RowColumn(title:name);
         }
       }),
     );
