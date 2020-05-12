@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './Dome1/Run.dart';
-import './AppBar/Run.dart';
+// import './Dome1/Run.dart';
+// import './AppBar/Run.dart';
 import './UI/Run.dart';
 
 

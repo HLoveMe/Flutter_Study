@@ -3,6 +3,7 @@ import './Container.dart';
 import './RowColmun.dart';
 import './Position.dart';
 import './TextDome.dart';
+import './ImagePage.dart';
 
 class UI extends StatelessWidget {
   @override
@@ -16,7 +17,7 @@ class UI extends StatelessWidget {
 
 class Home extends StatelessWidget {
   // final List<String> uis = ["Container"];
-  final List<String> uis = ["Container","Row/Column","Position","Text"];
+  final List<String> uis = ["Container","Row/Column","Position","Text","Image"];
   goSomeUI(String name, BuildContext context) {
     Navigator.push(
       context,
@@ -30,6 +31,8 @@ class Home extends StatelessWidget {
             return new StatckPosition(title: name,);
           case "Text":
           return new TextPage(title:name);
+          case "Image":
+            return new ImagePage(title:name);
         }
       }),
     );

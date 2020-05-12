@@ -43,9 +43,10 @@ class ContainerPage extends StatelessWidget {
           width: 100,
           height: 100,
           color: Colors.blue[300],
-          child: new Container(child: new Text("AA"), color: Colors.red),
-          alignment: Alignment.center,
+          child: new Container(child: new Text("Dome"), color: Colors.red),
+          // alignment: Alignment.center,
           // alignment: Alignment.bottomRight,
+          alignment: Alignment(.0,0),
         ),
         new Container(
           color: Colors.blue[300],
