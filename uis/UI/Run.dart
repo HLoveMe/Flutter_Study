@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import './Container.dart';
 import './RowColmun.dart';
+import './Position.dart';
+import './TextDome.dart';
 
 class UI extends StatelessWidget {
   @override
@@ -14,7 +16,7 @@ class UI extends StatelessWidget {
 
 class Home extends StatelessWidget {
   // final List<String> uis = ["Container"];
-  final List<String> uis = ["Container","Row/Column"];
+  final List<String> uis = ["Container","Row/Column","Position","Text"];
   goSomeUI(String name, BuildContext context) {
     Navigator.push(
       context,
@@ -24,6 +26,10 @@ class Home extends StatelessWidget {
             return new ContainerPage(title: name);
           case "Row/Column":
             return new RowColumn(title:name);
+            case "Position":
+            return new StatckPosition(title: name,);
+          case "Text":
+          return new TextPage(title:name);
         }
       }),
     );

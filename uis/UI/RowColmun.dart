@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 /*
  *
+  该组件用作布局组件
+
   Row和Column组件其实和web/rn中的Flex布局
     MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
-        主轴为起始位置 控制内部元素排列
+        主轴为起始位置 
     CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center,
-        次轴为居中 控制在父级元素的排列
+        次轴为居中 
     MainAxisSize mainAxisSize = MainAxisSize.max,
         在主轴上的尺寸。[是包裹其内容，还是撑满其父容器]
     List<Widget> children = const <Widget>[],
@@ -31,7 +33,7 @@ class RowColumn extends StatelessWidget {
         decoration: new BoxDecoration(border: Border.all(color: Colors.red)),
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             new Text("AAA"),
             new Container(
