@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-/**
- * 单 子节点视图 类似 div View
+/*
+  单 子节点视图 类似 div View
  
   double width,  宽
   double height,高

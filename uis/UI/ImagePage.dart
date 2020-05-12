@@ -1,15 +1,17 @@
+// import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 /**
  
-Image 组件
+Image 组件 
+
   ImageProvider(提供者)
     ExactAssetIamge
     MemoryImage
     AssBundleImageProvider
     AssetImage
-    NetworkImage
+    NetworkImage  没有本地缓存
     FileImage
 
  width / height 组件的高宽
@@ -31,7 +33,7 @@ Image 组件
 
   centerSlice 图片内部拉伸 [Image 的高宽  大于  图片的尺寸] 指定区域拉伸
 
-  gaplessPlayback
+  gaplessPlayback  当图片发生改变之后，重新加载图片过程中的样式
  */
 class ImagePage extends StatefulWidget {
   final String title;
@@ -68,13 +70,24 @@ class _ImagePage extends State<ImagePage> {
               new Image(image: new AssetImage("images/cat.jpg")),
               Image.asset("images/cat.jpg")
             ])),
-        // Text("网络占位图片CachedNetworkImage："),
-        // Padding(
-        //   padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-        //   child: new Row(children: [
-        //     FadeInImage.memoryNetwork(placeholder:  kTransparentImage, image: null)
-        //   ]),
-        // ),
+        Text("加载图片过度效果"),
+        new Row(children: [
+          new FadeInImage.assetNetwork(
+            placeholder: "images/loading.gif",
+            image: imageUrl2,
+            width: 100,
+            height: 50,
+            fadeOutDuration: const Duration(milliseconds: 1000),
+            fadeInDuration: const Duration(milliseconds: 1000),
+          ),
+        ]),
+        Text("网络占位图片CachedNetworkImage："),
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+          child: new Row(children: [
+            // FadeInImage.memoryNetwork(placeholder:  kTransparentImage, image: null)
+          ]),
+        ),
         Text("repeat"),
         new Image.asset(
           "images/cat.jpg",
