@@ -12,3 +12,8 @@
 	* ClipPath
 	* AlignmentGeometry
 	* EdgeInsetsGeometry
+	* ShapeBorder
+
+* 如何去掉按钮 等组件的 水波
+
+	

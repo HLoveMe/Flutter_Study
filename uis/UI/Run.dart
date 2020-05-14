@@ -4,6 +4,8 @@ import './RowColmun.dart';
 import './Position.dart';
 import './TextDome.dart';
 import './ImagePage.dart';
+import './Button.dart';
+import './PaddingAlignCenter.dart';
 
 class UI extends StatelessWidget {
   @override
@@ -17,7 +19,15 @@ class UI extends StatelessWidget {
 
 class Home extends StatelessWidget {
   // final List<String> uis = ["Container"];
-  final List<String> uis = ["Container","Row/Column","Position","Text","Image"];
+  final List<String> uis = [
+    "Container",
+    "Row/Column",
+    "Position",
+    "Text",
+    "Image",
+    "Button",
+    "PaddingAlignCenter"
+  ];
   goSomeUI(String name, BuildContext context) {
     Navigator.push(
       context,
@@ -26,13 +36,19 @@ class Home extends StatelessWidget {
           case "Container":
             return new ContainerPage(title: name);
           case "Row/Column":
-            return new RowColumn(title:name);
-            case "Position":
-            return new StatckPosition(title: name,);
+            return new RowColumn(title: name);
+          case "Position":
+            return new StatckPosition(
+              title: name,
+            );
           case "Text":
-          return new TextPage(title:name);
+            return new TextPage(title: name);
           case "Image":
-            return new ImagePage(title:name);
+            return new ImagePage(title: name);
+          case "Button":
+            return new ButtonPage(title: name);
+          case "PaddingAlignCenter":
+            return PaddingAlignCenter(title: name);
         }
       }),
     );

@@ -44,6 +44,7 @@ class ImagePage extends StatefulWidget {
 }
 
 class _ImagePage extends State<ImagePage> {
+  
   var imageUrl =
       "http://n.sinaimg.cn/sports/2_img/upload/cf0d0fdd/107/w1024h683/20181128/pKtl-hphsupx4744393.jpg";
 
@@ -55,121 +56,126 @@ class _ImagePage extends State<ImagePage> {
     super.initState();
     networkImage = new NetworkImage(imageUrl, scale: 4);
   }
-
+  // @override
+  // void dispose(){
+  //   super.dispose();
+  // }
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(widget.title),
       ),
-      body: new ListView(children: [
-        new Text("本地图片"),
-        Padding(
-            padding: EdgeInsets.all(5),
-            child: new Row(children: [
-              new Image(image: new AssetImage("images/cat.jpg")),
-              Image.asset("images/cat.jpg")
-            ])),
-        Text("加载图片过度效果"),
-        new Row(children: [
-          new FadeInImage.assetNetwork(
-            placeholder: "images/loading.gif",
-            image: imageUrl2,
-            width: 100,
-            height: 50,
-            fadeOutDuration: const Duration(milliseconds: 1000),
-            fadeInDuration: const Duration(milliseconds: 1000),
-          ),
-        ]),
-        Text("网络占位图片CachedNetworkImage："),
-        Padding(
-          padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-          child: new Row(children: [
-            // FadeInImage.memoryNetwork(placeholder:  kTransparentImage, image: null)
+      body: Center(
+        child: new ListView(children: [
+          new Text("本地图片"),
+          Padding(
+              padding: EdgeInsets.all(5),
+              child: new Row(children: [
+                new Image(image: new AssetImage("images/cat.jpg")),
+                Image.asset("images/cat.jpg")
+              ])),
+          Text("加载图片过度效果"),
+          new Row(children: [
+            new FadeInImage.assetNetwork(
+              placeholder: "images/loading.gif",
+              image: imageUrl2,
+              width: 100,
+              height: 50,
+              fadeOutDuration: const Duration(milliseconds: 1000),
+              fadeInDuration: const Duration(milliseconds: 1000),
+            ),
           ]),
-        ),
-        Text("repeat"),
-        new Image.asset(
-          "images/cat.jpg",
-          width: double.infinity,
-          height: 100,
-          repeat: ImageRepeat.repeatX,
-          alignment: Alignment(-1, 0),
-        ),
-        Text("圆角图片"),
-        new Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-          new Container(
-            width: 120,
-            height: 60,
-            padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
-                    image: NetworkImage(imageUrl), fit: BoxFit.cover)),
+          Text("网络占位图片CachedNetworkImage："),
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+            child: new Row(children: [
+              // FadeInImage.memoryNetwork(placeholder:  kTransparentImage, image: null)
+            ]),
           ),
-          new ClipOval(
-            child: Image.asset(
-              'images/cat.jpg',
-              width: 50,
-              height: 50,
-              fit: BoxFit.fitHeight,
+          Text("repeat"),
+          new Image.asset(
+            "images/cat.jpg",
+            width: double.infinity,
+            height: 100,
+            repeat: ImageRepeat.repeatX,
+            alignment: Alignment(-1, 0),
+          ),
+          Text("圆角图片"),
+          new Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+            new Container(
+              width: 120,
+              height: 60,
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                      image: NetworkImage(imageUrl), fit: BoxFit.cover)),
             ),
-          ),
-          new ClipOval(
-            child: Image.network(
-              imageUrl,
-              width: 50,
-              height: 50,
-              fit: BoxFit.fitHeight,
+            new ClipOval(
+              child: Image.asset(
+                'images/cat.jpg',
+                width: 50,
+                height: 50,
+                fit: BoxFit.fitHeight,
+              ),
             ),
-          ),
-          new ClipRRect(
-              borderRadius: BorderRadius.horizontal(
-                  left: Radius.circular(20), right: Radius.circular(10)),
+            new ClipOval(
               child: Image.network(
                 imageUrl,
-                width: 100,
-                height: 100,
+                width: 50,
+                height: 50,
                 fit: BoxFit.fitHeight,
-              ))
-        ]),
-        new Text('centerSlice图片内部拉伸：'),
-        Image.asset(
-          "images/cat.jpg",
-          height: 200,
-          width: double.infinity,
-          centerSlice:
-              new Rect.fromCircle(center: const Offset(40, 20), radius: 1),
-        ),
-        new Text('方向'),
-        new Row(children: [
-          new Image(image: new AssetImage("images/cat.jpg")),
-          Directionality(
-              child: Image.asset("images/cat.jpg", matchTextDirection: true),
-              textDirection: TextDirection.rtl)
-        ]),
-        new Text('点击替换图片'),
-        new Padding(
-          padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
-          child: Row(
-            children: <Widget>[
-              new RaisedButton(
-                onPressed: () {
-                  setState(() {
-                    networkImage = new NetworkImage(imageUrl2, scale: 8.5);
-                  });
-                },
-                child: Text('点击更换图片'),
               ),
-              new Image(
-                gaplessPlayback: false,
-                fit: BoxFit.contain,
-                image: networkImage,
-              ),
-            ],
+            ),
+            new ClipRRect(
+                borderRadius: BorderRadius.horizontal(
+                    left: Radius.circular(20), right: Radius.circular(10)),
+                child: Image.network(
+                  imageUrl,
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.fitHeight,
+                ))
+          ]),
+          new Text('centerSlice图片内部拉伸：'),
+          Image.asset(
+            "images/cat.jpg",
+            height: 200,
+            width: double.infinity,
+            centerSlice:
+                new Rect.fromCircle(center: const Offset(40, 20), radius: 1),
           ),
-        )
-      ]),
+          new Text('方向'),
+          new Row(children: [
+            new Image(image: new AssetImage("images/cat.jpg")),
+            Directionality(
+                child: Image.asset("images/cat.jpg", matchTextDirection: true),
+                textDirection: TextDirection.rtl)
+          ]),
+          new Text('点击替换图片'),
+          new Padding(
+            padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+            child: Row(
+              children: <Widget>[
+                new RaisedButton(
+                  onPressed: () {
+                    setState(() {
+                      networkImage = new NetworkImage(imageUrl2, scale: 8.5);
+                    });
+                  },
+                  child: Text('点击更换图片'),
+                ),
+                new Image(
+                  gaplessPlayback: false,
+                  fit: BoxFit.contain,
+                  image: networkImage,
+                ),
+              ],
+            ),
+          )
+        ]),
+      ),
     );
   }
 }
