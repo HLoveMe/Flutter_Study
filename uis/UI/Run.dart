@@ -6,6 +6,8 @@ import './TextDome.dart';
 import './ImagePage.dart';
 import './Button.dart';
 import './PaddingAlignCenter.dart';
+import './AppBarPage.dart';
+import './AppBar-View-Controller.dart';
 
 class UI extends StatelessWidget {
   @override
@@ -26,7 +28,11 @@ class Home extends StatelessWidget {
     "Text",
     "Image",
     "Button",
-    "PaddingAlignCenter"
+    "PaddingAlignCenter",
+    "AppBarPage",
+    "AppBar-View-Controller",
+    "Scaffold",
+    
   ];
   goSomeUI(String name, BuildContext context) {
     Navigator.push(
@@ -49,6 +55,10 @@ class Home extends StatelessWidget {
             return new ButtonPage(title: name);
           case "PaddingAlignCenter":
             return PaddingAlignCenter(title: name);
+          case "AppBarPage":
+            return new AppBarPage(title: name);
+          case "AppBar-View-Controller":
+            return AppBarViewController(title: name);
         }
       }),
     );
