@@ -8,6 +8,7 @@ import './Button.dart';
 import './PaddingAlignCenter.dart';
 import './AppBarPage.dart';
 import './AppBar-View-Controller.dart';
+import './AppBarViewTabController.dart';
 
 class UI extends StatelessWidget {
   @override
@@ -30,9 +31,9 @@ class Home extends StatelessWidget {
     "Button",
     "PaddingAlignCenter",
     "AppBarPage",
-    "AppBar-View-Controller",
+    "AppBar-View-TabController",
+    "AppBar-View-DefaultTabController",
     "Scaffold",
-    
   ];
   goSomeUI(String name, BuildContext context) {
     Navigator.push(
@@ -57,8 +58,12 @@ class Home extends StatelessWidget {
             return PaddingAlignCenter(title: name);
           case "AppBarPage":
             return new AppBarPage(title: name);
-          case "AppBar-View-Controller":
+          case "AppBar-View-TabController":
             return AppBarViewController(title: name);
+          case "AppBar-View-DefaultTabController":
+            return AppBarViewDefaultTabController(
+              title: name,
+            );
         }
       }),
     );
