@@ -13,9 +13,9 @@ import 'package:flutter/material.dart';
         在主轴上的尺寸。[是包裹其内容，还是撑满其父容器]
     List<Widget> children = const <Widget>[],
 
-    Row   主轴为横向
+    Row   主轴为横向 水平布局组件
 
-    Column 主轴为纵向
+    Column 主轴为纵向 纵向布局组件
       次轴为居中 所以不会撑满父容器。设置CrossAxisAlignment.stretch
  */
 
@@ -24,6 +24,7 @@ class RowColumn extends StatelessWidget {
   RowColumn({this.title});
   @override
   Widget build(BuildContext context) {
+    // Columns
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Row / Column"),

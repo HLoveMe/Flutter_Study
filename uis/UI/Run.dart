@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './Container.dart';
 import './RowColmun.dart';
 import './Position.dart';
+import './Position2.dart';
 import './TextDome.dart';
 import './ImagePage.dart';
 import './Button.dart';
@@ -26,6 +27,7 @@ class Home extends StatelessWidget {
     "Container",
     "Row/Column",
     "Position",
+    "Position2",
     "Text",
     "Image",
     "Button",
@@ -46,6 +48,10 @@ class Home extends StatelessWidget {
             return new RowColumn(title: name);
           case "Position":
             return new StatckPosition(
+              title: name,
+            );
+            case "Position2":
+            return new StatckPosition2(
               title: name,
             );
           case "Text":

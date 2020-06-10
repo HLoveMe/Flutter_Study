@@ -6,7 +6,7 @@ Padding的布局分为两种情况：
   * 当child不为空的时候，Padding会将布局约束传递给child，根据设置的padding属性，缩小child的布局尺寸。
     然后Padding将自己调整到child设置了padding属性的尺寸，在child周围创建空白区域。
 
-Align的布局行为分为两种情况：
+Align 的布局行为分为两种情况：
   * 当widthFactor和heightFactor==null，
     当其有限制条件的时候，Align会根据限制条件尽量的扩展自己的尺寸，
     当没有限制条件的时候，会调整到child的尺寸；
