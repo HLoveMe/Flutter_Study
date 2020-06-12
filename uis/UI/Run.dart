@@ -1,3 +1,4 @@
+import 'package:dome/UI/Drawer.dart';
 import 'package:flutter/material.dart';
 import './Container.dart';
 import './RowColmun.dart';
@@ -10,6 +11,8 @@ import './PaddingAlignCenter.dart';
 import './AppBarPage.dart';
 import './AppBar-View-Controller.dart';
 import './AppBarViewTabController.dart';
+import './Scaffold.dart';
+import './Drawer.dart';
 
 class UI extends StatelessWidget {
   @override
@@ -36,6 +39,7 @@ class Home extends StatelessWidget {
     "AppBar-View-TabController",
     "AppBar-View-DefaultTabController",
     "Scaffold",
+    "Drawer"
   ];
   goSomeUI(String name, BuildContext context) {
     Navigator.push(
@@ -50,7 +54,7 @@ class Home extends StatelessWidget {
             return new StatckPosition(
               title: name,
             );
-            case "Position2":
+          case "Position2":
             return new StatckPosition2(
               title: name,
             );
@@ -70,6 +74,10 @@ class Home extends StatelessWidget {
             return AppBarViewDefaultTabController(
               title: name,
             );
+          case "Scaffold":
+            return ScaffoldPage(title:"ScaffoldPage",);
+          case "Drawer":
+            return DrawPage(title:"DrawPage");
         }
       }),
     );

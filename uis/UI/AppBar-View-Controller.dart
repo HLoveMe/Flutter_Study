@@ -11,9 +11,10 @@ class AppBarViewController extends StatefulWidget {
 }
 
 /**
- 
- TabBarView TabController
-
+ TabController
+  TabBarView 
+  TabPageSelector
+  TabBar
  */
 class AppBarState extends State<AppBarViewController>
     with SingleTickerProviderStateMixin {
@@ -37,37 +38,50 @@ class AppBarState extends State<AppBarViewController>
     // DefaultTabController
 
     return new Scaffold(
-        appBar: new AppBar(
-          title: Text(widget.title),
-          actions: <Widget>[
-            new IconButton(
-                icon: Icon(Icons.arrow_forward),
-                onPressed: () {
-                  var lastIndex = _controller.index + 1;
-                  if (lastIndex >= _controller.length) {
-                    lastIndex = 0;
-                  }
-                  _controller.animateTo(lastIndex);
-                })
-          ],
-          bottom: PreferredSize(
-              child: new Container(
-                color: Colors.red,
-                height: 48,
-                alignment: Alignment.center,
-                child: TabPageSelector(
-                    controller: _controller,
-                    color: Colors.yellow,
-                    indicatorSize: 14,
-                    selectedColor: Colors.blue),
-              ),
-              preferredSize: new Size.fromHeight(48)),
-        ),
-        body: new TabBarView(
-            children: ["A", "B", "C", "D"].map((String name) {
-              return new TabPage(title: name,);
-            }).toList(),
-            controller: _controller));
+      appBar: new AppBar(
+        title: Text(widget.title),
+        actions: <Widget>[
+          new IconButton(
+              icon: Icon(Icons.arrow_forward),
+              onPressed: () {
+                var lastIndex = _controller.index + 1;
+                if (lastIndex >= _controller.length) {
+                  lastIndex = 0;
+                }
+                _controller.animateTo(lastIndex);
+              })
+        ],
+        bottom: PreferredSize(
+            child: new Container(
+              color: Colors.red,
+              height: 48,
+              alignment: Alignment.center,
+              child: TabPageSelector(
+                  controller: _controller,
+                  color: Colors.yellow,
+                  indicatorSize: 14,
+                  selectedColor: Colors.blue),
+            ),
+            preferredSize: new Size.fromHeight(48)),
+      ),
+      body: new TabBarView(
+          children: ["A", "B", "C", "D"].map((String name) {
+            return new TabPage(
+              title: name,
+            );
+          }).toList(),
+          controller: _controller),
+      bottomNavigationBar: Material(
+          child: TabBar(
+        tabs: [
+          Text("1"),
+          Tab(icon: Icon(Icons.person)),
+          Tab(icon: Icon(Icons.email)),
+          Tab(icon: Icon(Icons.email)),
+        ],
+        controller: _controller,
+      )),
+    );
   }
 }
 
