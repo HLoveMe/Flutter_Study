@@ -1,4 +1,6 @@
 import 'package:dome/UI/Drawer.dart';
+import 'package:dome/UI/NavigationDomeNamePush.dart';
+import 'package:dome/UI/NavigatorDome.dart';
 import 'package:flutter/material.dart';
 import './Container.dart';
 import './RowColmun.dart';
@@ -20,6 +22,12 @@ class UI extends StatelessWidget {
     return new MaterialApp(
       theme: ThemeData(primarySwatch: Colors.grey),
       home: Home(),
+      routes:{
+        "NavigationDome":(context)=>new NavigatorDome(),
+        "NameA":(context)=>new NameA(),
+        "NameB":(context)=>new NameB(),
+        "NameC":(context)=>new NameC(),
+      },
     );
   }
 }
@@ -39,7 +47,8 @@ class Home extends StatelessWidget {
     "AppBar-View-TabController",
     "AppBar-View-DefaultTabController",
     "Scaffold",
-    "Drawer"
+    "Drawer",
+    "NavigationDome"
   ];
   goSomeUI(String name, BuildContext context) {
     Navigator.push(
@@ -78,8 +87,10 @@ class Home extends StatelessWidget {
             return ScaffoldPage(title:"ScaffoldPage",);
           case "Drawer":
             return DrawPage(title:"DrawPage");
+          case "NavigationDome":
+            return NavigatorDome(title:"NavigationDome");
         }
-      }),
+      },settings: RouteSettings(name: name)),
     );
   }
 
