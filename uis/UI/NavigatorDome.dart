@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
 /**
+ * Route
+ *    OvervlyRoute
+ *        TransitionRoute
+ *            ModalRoute
+ *              PageRoute
+ *                 PageRouteBuilder
+ *              PopupRoute   
+ * 
  * 路由：
  *    PageRoute  页面 (继承ModalRoute)  opaque=true
  *    PopupRoute popup弹窗(继承ModalRoute) opaque=false
@@ -25,7 +33,7 @@ import 'package:flutter/material.dart';
  * replaceRouteBelow  待验证
  * 
  * 
- * 自定义路由  待验证
+ * 自定义路由  
  * 
  * 嵌套路由   待验证
  */
@@ -118,6 +126,25 @@ class NavigationState extends State<NavigatorDome> {
     //             child: ModalPage222())));
   }
 
+  _custom(BuildContext context) {
+    Navigator.of(context).push(PageRouteBuilder(pageBuilder:
+        (BuildContext context, Animation<double> animation,
+            Animation<double> secondaryAnimation) {
+      return FadeTransition(
+        opacity: animation,
+        child: RotationTransition(
+          turns: Tween<double>(begin: 0.5, end: 1.0).animate(animation),
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            color: Colors.white,
+            child: Center(child: Text("AAA")),
+          ),
+        ),
+      );
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
     // Columns
@@ -140,7 +167,8 @@ class NavigationState extends State<NavigatorDome> {
           new ListTile(
               title: Text("modal 界面1"), onTap: () => this._modal1(context)),
           new ListTile(
-              title: Text("modal 界面2"), onTap: () => this._modal2(context))
+              title: Text("modal 界面2"), onTap: () => this._modal2(context)),
+          new ListTile(title: Text("自定义路由"), onTap: () => this._custom(context))
         ]),
       ),
     );
